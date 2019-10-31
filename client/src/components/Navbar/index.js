@@ -4,12 +4,12 @@ import "./style.css"
 const Navbar = () => {
     return (
         <nav>
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
+            <div className="nav-wrapper">
+                <img href="/" src="./assets/images/frame.png" className="brand-logo nav-logo-img" />
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login/Logout</a></li>
                 </ul>
             </div>
         </nav>
