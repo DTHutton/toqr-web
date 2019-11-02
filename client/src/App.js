@@ -6,21 +6,16 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import "./App.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1
-  },
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(1),
   }
 }));
 
 const App = () => {
   const classes = useStyles();
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} spacing={3}>
       <Grid item xs={12} direction="row">
         <Navbar />
       </Grid>
