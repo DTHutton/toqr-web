@@ -1,18 +1,19 @@
 import React from "react"
-import "./style.css"
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import NavMenu from "./NavMenu";
 
 const Navbar = () => {
     return (
-        <nav>
-            <div className="nav-wrapper">
-                <img href="/" src="./assets/images/frame.png" className="brand-logo nav-logo-img" />
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Login/Logout</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="title" color="inherit">
+                        Stuff and Things
+                    </Typography>
+                    <NavMenu />
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }
 
