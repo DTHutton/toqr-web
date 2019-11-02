@@ -8,20 +8,20 @@ import "./App.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
-  paper: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridGap: theme.spacing(1),
+  }
 }));
 
 const App = () => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
-      <Grid item xs={12}>
+      <Grid item xs={12} direction="row">
         <Navbar />
       </Grid>
       <Grid item xs={12}>
@@ -35,3 +35,4 @@ const App = () => {
 }
 
 export default App;
+

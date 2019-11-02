@@ -1,5 +1,5 @@
 import React from "react"
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import NavMenu from "./NavMenu";
 
 const Navbar = () => {
@@ -7,10 +7,14 @@ const Navbar = () => {
         <div>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="title" color="inherit">
-                        Stuff and Things
+                    <Grid xs={9}>
+                        <Typography variant="title" color="inherit">
+                            Project Three: TourQR
                     </Typography>
-                    <NavMenu />
+                    </Grid>
+                    <Grid xs={3} align="right">
+                        <NavMenu />
+                    </Grid>
                 </Toolbar>
             </AppBar>
         </div>
