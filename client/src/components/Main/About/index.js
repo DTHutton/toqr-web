@@ -5,7 +5,9 @@ import { Paper, Typography, Grid } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(2, 2),
-        margin: theme.spacing(1, 1)
+        margin: theme.spacing(1, 1),
+        height: "100%",
+        width: "100%"
     },
 }));
 
@@ -13,7 +15,7 @@ const About = () => {
     const classes = useStyles();
 
     return (
-        <Grid xs={8}>
+        <Grid item xs={12} md={8}>
             <Paper className={classes.root}>
                 <Typography variant="h5" component="h3">
                     This is the about section.

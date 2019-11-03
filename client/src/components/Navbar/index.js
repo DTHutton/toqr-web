@@ -7,12 +7,12 @@ const Navbar = () => {
         <div>
             <AppBar position="static">
                 <Toolbar>
-                    <Grid xs={9}>
-                        <Typography variant="title" color="inherit">
+                    <Grid item xs={9}>
+                        <Typography variant="h5" component="h3" color="inherit">
                             Project Three: TourQR
                     </Typography>
                     </Grid>
-                    <Grid xs={3} align="right">
+                    <Grid item xs={3} align="right">
                         <NavMenu />
                     </Grid>
                 </Toolbar>
