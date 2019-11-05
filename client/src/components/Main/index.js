@@ -22,8 +22,10 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+// import { Link } from "react-router-dom";
 import About from "./About";
 import PWALaunch from "./PWALaunch"
+import SalesPitch from "./SalesPitch";
 
 const drawerWidth = 240;
 
@@ -160,6 +162,7 @@ const Main = props => {
             <Grid container direction="row" className={classes.mainSpacing}>
                 <PWALaunch />
                 <About />
+                <SalesPitch />
             </Grid>
         </div>
     )
