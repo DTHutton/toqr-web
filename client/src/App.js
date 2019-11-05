@@ -23,9 +23,9 @@ const App = () => {
       <NavDrawer>
         <Grid container direction="row" className={classes.mainSpacing}>
           <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/pricing" component={Pricing} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/Pricing" component={Pricing} />
         </Grid>
       </NavDrawer>
     </Router>

@@ -20,7 +20,9 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -53,6 +55,10 @@ const useStyles = makeStyles(theme => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+    },
+    unlink: {
+        textDecoration: "none",
+        textColor: "inherit"
     }
 }));
 
@@ -66,26 +72,36 @@ const Main = props => {
         setMobileOpen(!mobileOpen);
     };
 
+    const urlLink = route => (
+        route === "About" ? `/${route}`
+            : route === "Pricing" ? `/${route}`
+                : route === "Contact" ? `/${route}`
+                    : `/`
+    )
+
     const drawer = (
         <div>
             <div className={classes.toolbar} />
             <Divider />
             <List>
-                {["About", "Pricing", "Contact"].map(text => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{
-                            text === "About" ? <InfoIcon />
-                                : text === "Pricing" ? <MonetizationOnIcon />
-                                    : <EmailIcon />
-                        }
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
+                {["Home", "About", "Pricing", "Contact"].map(text => (
+                    <Link to={urlLink(text)} className={classes.unlink}>
+                        <ListItem button key={text}>
+                            <ListItemIcon>{
+                                text === "Home" ? <HomeIcon />
+                                    : text === "About" ? <InfoIcon />
+                                        : text === "Pricing" ? <MonetizationOnIcon />
+                                            : <EmailIcon />
+                            }
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
             <Divider />
             <List>
-                {["Profile", "Settings", "Logout"].map((text, index) => (
+                {["Profile", "Settings", "Logout"].map(text => (
                     <ListItem button key={text}>
                         <ListItemIcon>{
                             text === "Profile" ? <AccountBoxIcon />
@@ -97,7 +113,7 @@ const Main = props => {
                     </ListItem>
                 ))}
             </List>
-        </div>
+        </div >
     );
 
     return (
@@ -120,7 +136,6 @@ const Main = props => {
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden smUp implementation="css">
                     <Drawer
                         container={container}
@@ -132,7 +147,7 @@ const Main = props => {
                             paper: classes.drawerPaper,
                         }}
                         ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
+                            keepMounted: true,
                         }}
                     >
                         {drawer}
