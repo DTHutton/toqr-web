@@ -11,8 +11,7 @@ import {
     ListItemIcon,
     ListItemText,
     Toolbar,
-    Typography,
-    Grid
+    Typography
 } from "@material-ui/core";
 import InfoIcon from '@material-ui/icons/Info';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
@@ -22,10 +21,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-// import { Link } from "react-router-dom";
-import About from "./About";
-import PWALaunch from "./PWALaunch"
-import SalesPitch from "./SalesPitch";
 
 const drawerWidth = 240;
 
@@ -58,10 +53,6 @@ const useStyles = makeStyles(theme => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-    },
-    mainSpacing: {
-        padding: theme.spacing(1),
-        margin: theme.spacing(10, 1, 2, 1)
     }
 }));
 
@@ -159,11 +150,7 @@ const Main = props => {
                     </Drawer>
                 </Hidden>
             </nav>
-            <Grid container direction="row" className={classes.mainSpacing}>
-                <PWALaunch />
-                <About />
-                <SalesPitch />
-            </Grid>
+            {props.children}
         </div>
     )
 }
