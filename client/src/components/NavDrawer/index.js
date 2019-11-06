@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     },
     unlink: {
         textDecoration: "none",
-        textColor: "inherit"
+        color: "inherit"
     }
 }));
 
@@ -131,7 +131,7 @@ const Main = props => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        TOQR
+                        <Link to="/" className={classes.unlink}>TOQR</Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
