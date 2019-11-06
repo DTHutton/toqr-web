@@ -1,11 +1,11 @@
 import React from "react";
 
 const Contact = props => {
-    return (
-        <div>
+	return (
+		<div>
             Contact Placeholder
-        </div>
-    )
-}
+		</div>
+	);
+};
 
 export default Contact;

@@ -1,11 +1,11 @@
 import React from "react";
 
 const Pricing = props => {
-    return (
-        <div>
+	return (
+		<div>
             Pricing Placeholder
-        </div>
-    )
-}
+		</div>
+	);
+};
 
 export default Pricing;
