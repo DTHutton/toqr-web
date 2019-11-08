@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 
 const Pricing = () => {
 	const classes = useStyles();
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = useState(0);
 
 	const handleChange = (event, newValue) => setValue(newValue);
 
@@ -50,9 +50,9 @@ const Pricing = () => {
 		<div className={classes.root}>
 			<AppBar position="static">
 				<Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-					<Tab label="Item One" {...allyProps(0)} />
-					<Tab label="Item Two" {...allyProps(1)} />
-					<Tab label="Item Three" {...allyProps(2)} />
+					<Tab label="Free" {...allyProps(0)} />
+					<Tab label="Basic" {...allyProps(1)} />
+					<Tab label="Premium" {...allyProps(2)} />
 				</Tabs>
 			</AppBar>
 			<TabPanel value={value} index={0}>

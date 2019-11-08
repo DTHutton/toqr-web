@@ -11,7 +11,8 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Toolbar,
-	Typography
+	Typography,
+	Grid
 } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
@@ -22,7 +23,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -59,6 +60,9 @@ const useStyles = makeStyles(theme => ({
 	unlink: {
 		textDecoration: "none",
 		color: "inherit"
+	},
+	title: {
+		textAlign: "center"
 	}
 }));
 
@@ -116,57 +120,80 @@ const Main = props => {
 		</div >
 	);
 
+	const navTitle = ({ match }) => {
+		const title = () => !match.params.id ? "Home" : match.params.id;
+		return (
+			<div>{title()}</div>
+		)
+	};
+
+	// 
+
 	return (
-		<div className={classes.root}>
-			<CssBaseline />
-			<AppBar position="fixed" className={classes.appBar}>
-				<Toolbar>
-					<IconButton
-						color="inherit"
-						aria-label="open drawer"
-						edge="start"
-						onClick={handleDrawerToggle}
-						className={classes.menuButton}
-					>
-						<MenuIcon />
-					</IconButton>
-					<Typography variant="h6" noWrap>
-						<Link to="/" className={classes.unlink}>TOQR</Link>
-					</Typography>
-				</Toolbar>
-			</AppBar>
-			<nav className={classes.drawer} aria-label="mailbox folders">
-				<Hidden smUp implementation="css">
-					<Drawer
-						container={container}
-						variant="temporary"
-						anchor={theme.direction === "rtl" ? "right" : "left"}
-						open={mobileOpen}
-						onClose={handleDrawerToggle}
-						classes={{
-							paper: classes.drawerPaper
-						}}
-						ModalProps={{
-							keepMounted: true
-						}}
-					>
-						{drawer}
-					</Drawer>
-				</Hidden>
-				<Hidden xsDown implementation="css">
-					<Drawer
-						classes={{
-							paper: classes.drawerPaper
-						}}
-						variant="permanent"
-						open
-					>
-						{drawer}
-					</Drawer>
-				</Hidden>
-			</nav>
-			{props.children}
-		</div>
+		<Router>
+			<div className={classes.root}>
+				<CssBaseline />
+				<AppBar position="fixed" className={classes.appBar}>
+					<Toolbar>
+						<IconButton
+							color="inherit"
+							aria-label="open drawer"
+							edge="start"
+							onClick={handleDrawerToggle}
+							className={classes.menuButton}
+						>
+							<MenuIcon />
+						</IconButton>
+
+						<Grid container>
+							<Grid item sm={5}>
+								<Typography variant="h6" noWrap>
+									<Link to="/" className={classes.unlink}>TOQR</Link>
+								</Typography>
+							</Grid>
+
+							<Grid item sm={7} >
+								<Typography variant="h6" noWrap>
+									<Route exact path="/" component={navTitle} />
+									<Route path="/:id" component={navTitle} />
+								</Typography>
+							</Grid>
+						</Grid>
+					</Toolbar>
+				</AppBar>
+				<nav className={classes.drawer} aria-label="mailbox folders">
+					<Hidden smUp implementation="css">
+						<Drawer
+							container={container}
+							variant="temporary"
+							anchor={theme.direction === "rtl" ? "right" : "left"}
+							open={mobileOpen}
+							onClose={handleDrawerToggle}
+							classes={{
+								paper: classes.drawerPaper
+							}}
+							ModalProps={{
+								keepMounted: true
+							}}
+						>
+							{drawer}
+						</Drawer>
+					</Hidden>
+					<Hidden xsDown implementation="css">
+						<Drawer
+							classes={{
+								paper: classes.drawerPaper
+							}}
+							variant="permanent"
+							open
+						>
+							{drawer}
+						</Drawer>
+					</Hidden>
+				</nav>
+				{props.children}
+			</div>
+		</Router>
 	);
 };
 export default Main;
