@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
+import { AppBar, Tabs, Tab, Typography, Box, Paper } from "@material-ui/core";
+import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const TabPanel = props => {
 	const { children, value, index, ...other } = props;
@@ -38,6 +40,9 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1,
 		backgroundColor: theme.palette.background.paper,
 	},
+	paperRoot: {
+		padding: theme.spacing(3, 2),
+	}
 }));
 
 const Pricing = () => {
@@ -49,20 +54,41 @@ const Pricing = () => {
 	return (
 		<div className={classes.root}>
 			<AppBar position="static">
-				<Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-					<Tab label="Free" {...allyProps(0)} />
-					<Tab label="Basic" {...allyProps(1)} />
-					<Tab label="Premium" {...allyProps(2)} />
+				<Tabs value={value} onChange={handleChange} aria-label="simple tabs example" centered>
+					<Tab label="Free" icon={<MoneyOffIcon />} {...allyProps(0)} />
+					<Tab label="Basic" icon={<AttachMoneyIcon />} {...allyProps(1)} />
+					<Tab label="Premium" icon={<AttachMoneyIcon />} {...allyProps(2)} />
 				</Tabs>
 			</AppBar>
 			<TabPanel value={value} index={0}>
-				Item One
+				<Paper className={classes.paperRoot}>
+					<Typography variant="h5" component="h3">
+						Free Tier
+      				</Typography>
+					<Typography component="p">
+						Description of what comes with this pricing tier.
+      				</Typography>
+				</Paper>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
-				Item Two
+				<Paper className={classes.paperRoot}>
+					<Typography variant="h5" component="h3">
+						Basic Tier
+					</Typography>
+					<Typography component="p">
+						Description of what comes with this pricing tier.
+      				</Typography>
+				</Paper>
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				Item Three
+				<Paper className={classes.paperRoot}>
+					<Typography variant="h5" component="h3">
+						Premium Tier
+      				</Typography>
+					<Typography component="p">
+						Description of what comes with this pricing tier.
+      				</Typography>
+				</Paper>
 			</TabPanel>
 		</div>
 	);
