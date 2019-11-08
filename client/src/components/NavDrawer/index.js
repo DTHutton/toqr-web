@@ -39,8 +39,10 @@ const useStyles = makeStyles(theme => ({
 	},
 	appBar: {
 		[theme.breakpoints.up("sm")]: {
-			width: `calc(100% - ${drawerWidth}px)`,
-			marginLeft: drawerWidth
+			// width: `calc(100% - ${drawerWidth}px)`,
+			width: "100%",
+			marginLeft: drawerWidth,
+			zIndex: theme.zIndex.drawer + 1,
 		}
 	},
 	menuButton: {
@@ -63,6 +65,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	title: {
 		textAlign: "center"
+	},
+	logoPad: {
+		paddingLeft: "45px"
 	}
 }));
 
@@ -146,13 +151,15 @@ const Main = props => {
 						</IconButton>
 
 						<Grid container>
-							<Grid item sm={5}>
-								<Typography variant="h6" noWrap>
-									<Link to="/" className={classes.unlink}>TOQR</Link>
-								</Typography>
-							</Grid>
+							<Hidden xsDown>
+								<Grid item sm={5} className={classes.logoPad}>
+									<Typography variant="h6" noWrap>
+										<Link to="/" className={classes.unlink}>TOQR</Link>
+									</Typography>
+								</Grid>
+							</Hidden>
 
-							<Grid item sm={7} >
+							<Grid item xs={12} sm={7}>
 								<Typography variant="h6" noWrap>
 									<Route exact path="/" component={navTitle} />
 									<Route path="/:id" component={navTitle} />
