@@ -1,97 +1,164 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography, Box, Paper } from "@material-ui/core";
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-
-const TabPanel = props => {
-	const { children, value, index, ...other } = props;
-
-	return (
-		<Typography
-			component="div"
-			role="tabpanel"
-			hidden={value !== index}
-			id={`simple-tabpanel-${index}`}
-			aria-labelledby={`simple-tab-${index}`}
-			{...other}
-		>
-			<Box p={3}>{children}</Box>
-		</Typography>
-	);
-};
-
-TabPanel.propTypes = {
-	children: PropTypes.node,
-	index: PropTypes.any.isRequired,
-	value: PropTypes.any.isRequired,
-};
-
-const allyProps = index => {
-	return {
-		id: `simple-tab-${index}`,
-		"aria-controls": `simple-tabpanel-${index}`,
-	};
-};
+import React, { Fragment } from 'react';
+import {
+	Button,
+	Card,
+	CardActions,
+	CardContent,
+	CardHeader,
+	CssBaseline,
+	Grid,
+	Typography,
+	Container
+} from "@material-ui/core"
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		flexGrow: 1,
-		backgroundColor: theme.palette.background.paper,
+	'@global': {
+		ul: {
+			margin: 0,
+			padding: 0,
+		},
+		li: {
+			listStyle: 'none',
+		},
 	},
-	paperRoot: {
-		padding: theme.spacing(3, 2),
-	}
+	appBar: {
+		borderBottom: `1px solid ${theme.palette.divider}`,
+	},
+	toolbar: {
+		flexWrap: 'wrap',
+	},
+	toolbarTitle: {
+		flexGrow: 1,
+	},
+	link: {
+		margin: theme.spacing(1, 1.5),
+	},
+	heroContent: {
+		padding: theme.spacing(8, 0, 6),
+	},
+	cardHeader: {
+		backgroundColor: theme.palette.grey[200],
+	},
+	cardPricing: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'baseline',
+		marginBottom: theme.spacing(2),
+	},
+	footer: {
+		borderTop: `1px solid ${theme.palette.divider}`,
+		marginTop: theme.spacing(8),
+		paddingTop: theme.spacing(3),
+		paddingBottom: theme.spacing(3),
+		[theme.breakpoints.up('sm')]: {
+			paddingTop: theme.spacing(6),
+			paddingBottom: theme.spacing(6),
+		},
+	},
 }));
+
+const tiers = [
+	{
+		title: 'Free',
+		price: '0',
+		description: [
+			'10 users included',
+			'2 GB of storage',
+			'Help center access',
+			'Email support'
+		],
+		buttonText: 'Sign up for free',
+		buttonVariant: 'outlined',
+	},
+	{
+		title: 'Pro',
+		price: '15',
+		description: [
+			'20 users included',
+			'10 GB of storage',
+			'Help center access',
+			'Priority email support',
+		],
+		buttonText: 'Get started',
+		buttonVariant: 'outlined',
+	},
+	{
+		title: 'Enterprise',
+		price: '30',
+		description: [
+			'50 users included',
+			'30 GB of storage',
+			'Help center access',
+			'Phone & email support',
+		],
+		buttonText: 'Contact us',
+		buttonVariant: 'outlined',
+	},
+];
 
 const Pricing = () => {
 	const classes = useStyles();
-	const [value, setValue] = useState(0);
-
-	const handleChange = (event, newValue) => setValue(newValue);
 
 	return (
-		<div className={classes.root}>
-			<AppBar position="static">
-				<Tabs value={value} onChange={handleChange} aria-label="simple tabs example" centered>
-					<Tab label="Free" icon={<MoneyOffIcon />} {...allyProps(0)} />
-					<Tab label="Basic" icon={<AttachMoneyIcon />} {...allyProps(1)} />
-					<Tab label="Premium" icon={<AttachMoneyIcon />} {...allyProps(2)} />
-				</Tabs>
-			</AppBar>
-			<TabPanel value={value} index={0}>
-				<Paper className={classes.paperRoot}>
-					<Typography variant="h5" component="h3">
-						Free Tier
-      				</Typography>
-					<Typography component="p">
-						Description of what comes with this pricing tier.
-      				</Typography>
-				</Paper>
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				<Paper className={classes.paperRoot}>
-					<Typography variant="h5" component="h3">
-						Basic Tier
-					</Typography>
-					<Typography component="p">
-						Description of what comes with this pricing tier.
-      				</Typography>
-				</Paper>
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				<Paper className={classes.paperRoot}>
-					<Typography variant="h5" component="h3">
-						Premium Tier
-      				</Typography>
-					<Typography component="p">
-						Description of what comes with this pricing tier.
-      				</Typography>
-				</Paper>
-			</TabPanel>
-		</div>
+		<Fragment>
+			<CssBaseline />
+			{/* Hero unit */}
+			<Container maxWidth="sm" component="main" className={classes.heroContent}>
+				<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+					Pricing
+        		</Typography>
+				<Typography variant="h5" align="center" color="textSecondary" component="p">
+					We can build a customized pricing package to suit your needs or you can try one of our template packages.
+        		</Typography>
+			</Container>
+			{/* End hero unit */}
+			{/* Pricing unit */}
+			<Container maxWidth="md" component="main">
+				<Grid container spacing={5} alignItems="flex-end">
+					{tiers.map(tier => (
+						// Enterprise card is full width at sm breakpoint
+						<Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+							<Card>
+								<CardHeader
+									title={tier.title}
+									subheader={tier.subheader}
+									titleTypographyProps={{ align: 'center' }}
+									subheaderTypographyProps={{ align: 'center' }}
+									// action={tier.title === 'Pro' ? <StarIcon /> : null}
+									className={classes.cardHeader}
+								/>
+								<CardContent>
+									<div className={classes.cardPricing}>
+										<Typography component="h2" variant="h3" color="textPrimary">
+											${tier.price}
+										</Typography>
+										<Typography variant="h6" color="textSecondary">
+											/mo
+                    					</Typography>
+									</div>
+									<ul>
+										{tier.description.map(line => (
+											<Typography component="li" variant="subtitle1" align="center" key={line}>
+												{line}
+											</Typography>
+										))}
+									</ul>
+								</CardContent>
+								<CardActions>
+									<Button fullWidth variant={tier.buttonVariant} color="primary">
+										{tier.buttonText}
+									</Button>
+								</CardActions>
+							</Card>
+						</Grid>
+					))}
+				</Grid>
+			</Container>
+			{/* End Pricing unit */}
+
+		</Fragment>
 	);
-};
+}
 
 export default Pricing;
