@@ -72,7 +72,6 @@ const Footer = () => {
 	return (
 		<Fragment>
 			<CssBaseline />
-
 			{/* Footer */}
 			<Container maxWidth="md" component="footer" className={classes.footer}>
 				<Grid container spacing={4} justify="space-evenly">

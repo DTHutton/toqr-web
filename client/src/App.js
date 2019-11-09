@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavDrawer from "./components/NavDrawer";
 import { Grid, CssBaseline } from "@material-ui/core";
@@ -8,12 +8,16 @@ import Contact from "./components/pages/Contact";
 import Pricing from "./components/pages/Pricing";
 import Footer from "./components/Footer";
 import { makeStyles } from "@material-ui/core/styles";
-import "./App.css";
+// import "./App.css";
 
 const useStyles = makeStyles(theme => ({
 	"@global": {
 		body: {
 			backgroundColor: theme.palette.common.white,
+			fontFamily: [
+				"Roboto",
+				"sans-serif"
+			]
 		}
 	},
 	mainSpacing: {
@@ -26,7 +30,7 @@ const App = () => {
 	const classes = useStyles();
 	return (
 		<Router>
-			<React.Fragment>
+			<Fragment>
 				<CssBaseline />
 				<NavDrawer>
 					<Grid container direction="row" className={classes.mainSpacing}>
@@ -37,7 +41,7 @@ const App = () => {
 					</Grid>
 				</NavDrawer>
 				<Footer />
-			</React.Fragment>
+			</Fragment>
 
 		</Router>
 	);
