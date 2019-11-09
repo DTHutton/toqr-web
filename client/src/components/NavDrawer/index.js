@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Main = props => {
+const NavDrawer = props => {
 	const { container } = props;
 	const classes = useStyles();
 	const theme = useTheme();
@@ -203,4 +203,4 @@ const Main = props => {
 		</Router>
 	);
 };
-export default Main;
+export default NavDrawer;

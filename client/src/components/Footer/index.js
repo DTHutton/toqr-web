@@ -23,6 +23,15 @@ function Copyright() {
 }
 
 const useStyles = makeStyles(theme => ({
+	"@global": {
+		ul: {
+			margin: 0,
+			padding: 0,
+		},
+		li: {
+			listStyle: "none",
+		},
+	},
 	link: {
 		margin: theme.spacing(1, 1.5),
 	},
