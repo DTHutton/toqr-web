@@ -6,6 +6,7 @@ import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import Pricing from "./components/pages/Pricing";
+import Footer from "./components/Footer";
 import { makeStyles } from "@material-ui/core/styles";
 import "./App.css";
 
@@ -35,6 +36,7 @@ const App = () => {
 						<Route exact path="/Pricing" component={Pricing} />
 					</Grid>
 				</NavDrawer>
+				<Footer />
 			</React.Fragment>
 
 		</Router>
