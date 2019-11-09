@@ -27,7 +27,7 @@ const Contact = () => {
 					Contact Us
 				</Typography>
 				<Typography variant="h5" align="center" color="textSecondary" component="p">
-					Have questions about our product? Let us know! We're always happy to address any concerns!
+					Have questions about our product? Let us know! We&apos;re always happy to address any concerns!
 				</Typography>
 			</Container>
 			<Container>

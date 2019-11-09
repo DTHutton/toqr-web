@@ -33,12 +33,12 @@ const App = () => {
 				<CssBaseline />
 				<NavDrawer>
 					<Container>
-					<Grid container direction="row" className={classes.mainSpacing}>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/About" component={About} />
-						<Route exact path="/Contact" component={Contact} />
-						<Route exact path="/Pricing" component={Pricing} />
-					</Grid>
+						<Grid container direction="row" className={classes.mainSpacing}>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/About" component={About} />
+							<Route exact path="/Contact" component={Contact} />
+							<Route exact path="/Pricing" component={Pricing} />
+						</Grid>
 					</Container>
 				</NavDrawer>
 				<Footer />
