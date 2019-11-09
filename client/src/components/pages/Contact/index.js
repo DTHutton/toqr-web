@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import {
 	Grid,
 	Typography,
 	TextField,
 	Paper
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -21,7 +21,7 @@ const Contact = () => {
 			<Paper className={classes.root}>
 				<Typography variant="h6" gutterBottom>
 					Contact Us
-      		</Typography>
+				</Typography>
 				<Grid container spacing={3}>
 					<Grid item xs={12} sm={6}>
 						<TextField
@@ -74,6 +74,6 @@ const Contact = () => {
 			</Paper>
 		</Fragment>
 	);
-}
+};
 
 export default Contact;

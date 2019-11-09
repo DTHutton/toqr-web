@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import {
 	Button,
 	Card,
@@ -9,17 +9,17 @@ import {
 	Grid,
 	Typography,
 	Container
-} from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-	'@global': {
+	"@global": {
 		ul: {
 			margin: 0,
 			padding: 0,
 		},
 		li: {
-			listStyle: 'none',
+			listStyle: "none",
 		},
 	},
 	heroContent: {
@@ -29,49 +29,49 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.grey[200],
 	},
 	cardPricing: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'baseline',
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "baseline",
 		marginBottom: theme.spacing(2),
 	}
 }));
 
 const tiers = [
 	{
-		title: 'Free',
-		price: '0',
+		title: "Free",
+		price: "0",
 		description: [
-			'10 users included',
-			'2 GB of storage',
-			'Help center access',
-			'Email support'
+			"10 users included",
+			"2 GB of storage",
+			"Help center access",
+			"Email support"
 		],
-		buttonText: 'Sign up for free',
-		buttonVariant: 'outlined',
+		buttonText: "Sign up for free",
+		buttonVariant: "outlined",
 	},
 	{
-		title: 'Pro',
-		price: '15',
+		title: "Pro",
+		price: "15",
 		description: [
-			'20 users included',
-			'10 GB of storage',
-			'Help center access',
-			'Priority email support',
+			"20 users included",
+			"10 GB of storage",
+			"Help center access",
+			"Priority email support",
 		],
-		buttonText: 'Get started',
-		buttonVariant: 'outlined',
+		buttonText: "Get started",
+		buttonVariant: "outlined",
 	},
 	{
-		title: 'Enterprise',
-		price: '30',
+		title: "Enterprise",
+		price: "30",
 		description: [
-			'50 users included',
-			'30 GB of storage',
-			'Help center access',
-			'Phone & email support',
+			"50 users included",
+			"30 GB of storage",
+			"Help center access",
+			"Phone & email support",
 		],
-		buttonText: 'Contact us',
-		buttonVariant: 'outlined',
+		buttonText: "Contact us",
+		buttonVariant: "outlined",
 	},
 ];
 
@@ -85,10 +85,10 @@ const Pricing = () => {
 			<Container maxWidth="sm" component="main" className={classes.heroContent}>
 				<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
 					Pricing
-        		</Typography>
+				</Typography>
 				<Typography variant="h5" align="center" color="textSecondary" component="p">
 					We can build a customized pricing package to suit your needs or you can try one of our template packages.
-        		</Typography>
+				</Typography>
 			</Container>
 			{/* End hero unit */}
 			{/* Pricing unit */}
@@ -96,13 +96,13 @@ const Pricing = () => {
 				<Grid container spacing={5} alignItems="flex-end">
 					{tiers.map(tier => (
 						// Enterprise card is full width at sm breakpoint
-						<Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+						<Grid item key={tier.title} xs={12} sm={tier.title === "Enterprise" ? 12 : 6} md={4}>
 							<Card>
 								<CardHeader
 									title={tier.title}
 									subheader={tier.subheader}
-									titleTypographyProps={{ align: 'center' }}
-									subheaderTypographyProps={{ align: 'center' }}
+									titleTypographyProps={{ align: "center" }}
+									subheaderTypographyProps={{ align: "center" }}
 									className={classes.cardHeader}
 								/>
 								<CardContent>
@@ -112,7 +112,7 @@ const Pricing = () => {
 										</Typography>
 										<Typography variant="h6" color="textSecondary">
 											/mo
-                    					</Typography>
+										</Typography>
 									</div>
 									<ul>
 										{tier.description.map(line => (
@@ -136,6 +136,6 @@ const Pricing = () => {
 
 		</Fragment>
 	);
-}
+};
 
 export default Pricing;

@@ -129,7 +129,7 @@ const Main = props => {
 		const title = () => !match.params.id ? "Home" : match.params.id;
 		return (
 			<div>{title()}</div>
-		)
+		);
 	};
 
 	// 

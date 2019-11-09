@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import SalesPitch from "./SalesPitch";
 import PWALaunch from "./PWALaunch";
 
-const Home = props => {
+const Home = () => {
 	return (
 		<div>
 			<Grid container direction="row">
