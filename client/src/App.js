@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Grid, CssBaseline, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,11 +12,7 @@ import Footer from "./components/Footer";
 const useStyles = makeStyles(theme => ({
 	"@global": {
 		body: {
-			backgroundColor: theme.palette.common.white,
-			fontFamily: [
-				"Roboto",
-				"sans-serif"
-			]
+			backgroundColor: theme.palette.common.white
 		}
 	},
 	mainSpacing: {
@@ -29,8 +25,8 @@ const App = () => {
 	const classes = useStyles();
 	return (
 		<Router>
-			<Fragment>
-				<CssBaseline />
+			<CssBaseline />
+			<Container>
 				<NavDrawer>
 					<Container>
 						<Grid container direction="row" className={classes.mainSpacing}>
@@ -38,12 +34,11 @@ const App = () => {
 							<Route exact path="/About" component={About} />
 							<Route exact path="/Contact" component={Contact} />
 							<Route exact path="/Pricing" component={Pricing} />
+							<Footer />
 						</Grid>
 					</Container>
 				</NavDrawer>
-				<Footer />
-			</Fragment>
-
+			</Container>
 		</Router>
 	);
 };

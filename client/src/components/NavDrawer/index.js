@@ -29,7 +29,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: "flex"
+		display: "flex"	
 	},
 	drawer: {
 		[theme.breakpoints.up("sm")]: {
@@ -131,8 +131,6 @@ const NavDrawer = props => {
 			<div>{title()}</div>
 		);
 	};
-
-	// 
 
 	return (
 		<Router>
