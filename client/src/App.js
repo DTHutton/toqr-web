@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Grid, CssBaseline, Container } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import NavDrawer from "./components/NavDrawer";
-import { Grid, CssBaseline } from "@material-ui/core";
 import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import Pricing from "./components/pages/Pricing";
 import Footer from "./components/Footer";
-import { makeStyles } from "@material-ui/core/styles";
-// import "./App.css";
 
 const useStyles = makeStyles(theme => ({
 	"@global": {
@@ -33,12 +32,14 @@ const App = () => {
 			<Fragment>
 				<CssBaseline />
 				<NavDrawer>
+					<Container>
 					<Grid container direction="row" className={classes.mainSpacing}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/About" component={About} />
 						<Route exact path="/Contact" component={Contact} />
 						<Route exact path="/Pricing" component={Pricing} />
 					</Grid>
+					</Container>
 				</NavDrawer>
 				<Footer />
 			</Fragment>
