@@ -8,6 +8,7 @@ import Home from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
 import Pricing from "./components/pages/Pricing";
 import Footer from "./components/Footer";
+import QRForm from "./components/pages/QRForm";
 
 const useStyles = makeStyles(theme => ({
 	"@global": {
@@ -34,6 +35,7 @@ const App = () => {
 							<Route exact path="/About" component={About} />
 							<Route exact path="/Contact" component={Contact} />
 							<Route exact path="/Pricing" component={Pricing} />
+							<Route exact path="/QRForm" component={QRForm} />
 							<Footer />
 						</Grid>
 					</Container>
