@@ -125,12 +125,12 @@ const NavDrawer = props => {
 		</div >
 	);
 
-	const navTitle = ({ match }) => {
-		const title = () => !match.params.id ? "Home" : match.params.id;
-		return (
-			<div>{title()}</div>
-		);
-	};
+	// const navTitle = ({ match }) => {
+	// 	const title = () => !match.params.id ? "Home" : match.params.id;
+	// 	return (
+	// 		<div>{title()}</div>
+	// 	);
+	// };
 
 	return (
 		<Router>
@@ -157,12 +157,12 @@ const NavDrawer = props => {
 								</Grid>
 							</Hidden>
 
-							<Grid item xs={12} sm={7}>
+							{/* <Grid item xs={12} sm={7}>
 								<Typography variant="h6" noWrap>
 									<Route exact path="/" component={navTitle} />
 									<Route path="/:id" component={navTitle} />
 								</Typography>
-							</Grid>
+							</Grid> */}
 						</Grid>
 					</Toolbar>
 				</AppBar>
