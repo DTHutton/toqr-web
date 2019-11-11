@@ -12,9 +12,6 @@ import SendIcon from "@material-ui/icons/Send";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-	root: {
-
-	},
 	paper: {
 		padding: theme.spacing(3, 2),
 		backgroundColor: theme.palette.background.paper
@@ -30,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Contact = props => {
+const Contact = () => {
 	const classes = useStyles();
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -38,12 +35,12 @@ const Contact = props => {
 	const [message, setMessage] = useState("");
 
 	const handleSubmit = e => {
-		e.preventDefault()
-		console.log("contact form data:", { firstName, lastName, email, message })
-		setFirstName("")
-		setLastName("")
-		setEmail("")
-		setMessage("")
+		e.preventDefault();
+		console.log("contact form data:", { firstName, lastName, email, message });
+		setFirstName("");
+		setLastName("");
+		setEmail("");
+		setMessage("");
 	};
 
 	return (
@@ -128,7 +125,7 @@ const Contact = props => {
 								endIcon={<SendIcon />}
 							>
 								Send
-						</Button>
+							</Button>
 						</Grid>
 					</Container>
 				</form>

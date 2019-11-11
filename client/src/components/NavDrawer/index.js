@@ -23,7 +23,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	appBar: {
 		[theme.breakpoints.up("sm")]: {
-			// width: `calc(100% - ${drawerWidth}px)`,
 			width: "100%",
 			marginLeft: drawerWidth,
 			zIndex: theme.zIndex.drawer + 1,
