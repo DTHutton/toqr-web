@@ -6,11 +6,7 @@ import {
 	Paper,
 	Container,
 	Divider,
-	Button,
-	FormControl,
-	Input,
-	InputLabel,
-	FormHelperText
+	Button
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,9 +27,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	button: {
 		margin: theme.spacing(1),
-	},
-	btnAlign: {
-		alignItems: "flex-end"
 	}
 }));
 
@@ -47,9 +40,12 @@ const Contact = props => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		console.log("contact form data:", { firstName, lastName, email, message })
+		setFirstName("")
+		setLastName("")
+		setEmail("")
+		setMessage("")
 	};
 
-	// asd
 	return (
 		<Container maxWidth="lg">
 			<Paper className={classes.paper}>
@@ -63,7 +59,6 @@ const Contact = props => {
 				</Container>
 				<Divider className={classes.divideMargin} />
 				<form onSubmit={handleSubmit}>
-
 					<Container>
 						<Grid container spacing={3}>
 							<Grid item xs={12} sm={6}>
@@ -121,28 +116,14 @@ const Contact = props => {
 									rowsMax={4}
 								/>
 							</Grid>
-							{/* <Grid item xs={12}>
-								<InputLabel htmlFor="my-input">Email address</InputLabel>
-								<Input id="my-input" aria-describedby="my-helper-text" />
-								<FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-							</Grid> */}
 						</Grid>
 					</Container>
 					<Container>
-						<Grid className={classes.btnAlign}>
-							{/* <Button
-							variant="contained"
-							color="secondary"
-							className={classes.button}
-							startIcon={<DeleteIcon />}
-						>
-							Delete
-						</Button> */}
+						<Grid>
 							<Button
 								variant="contained"
 								color="primary"
 								type="submit"
-								onClick={() => console.log("hello")}
 								className={classes.button}
 								endIcon={<SendIcon />}
 							>
@@ -151,7 +132,6 @@ const Contact = props => {
 						</Grid>
 					</Container>
 				</form>
-
 			</Paper>
 		</Container>
 	);
