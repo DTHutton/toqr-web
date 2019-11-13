@@ -30,12 +30,14 @@ const Contact = () => {
     const classes = useStyles();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [client, setClient] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("contact form data:", { title, content });
+        console.log("contact form data:", { client, title, content });
         setTitle("");
         setContent("");
+        setClient("");
     };
 
     return (
@@ -57,13 +59,22 @@ const Contact = () => {
                                 <TextField
                                     variant="outlined"
                                     required
+                                    id="client"
+                                    name="client"
+                                    value={client}
+                                    onChange={(e) => setClient(e.target.value)}
+                                    label="Name of client"
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    variant="outlined"
+                                    required
                                     id="title"
                                     name="title"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     label="Title of content"
-                                    fullWidth
-                                    autoComplete="fname"
                                 />
                             </Grid>
                             <Grid item xs={12}>
