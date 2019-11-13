@@ -9,6 +9,7 @@ import {
     Button
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import API from "../../../utils/API"
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -28,16 +29,63 @@ const useStyles = makeStyles(theme => ({
 
 const Contact = () => {
     const classes = useStyles();
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [client, setClient] = useState("");
+
+    const defaultState = {
+        title: "",
+        content: "",
+        client: ""
+    }
+    const [state, setState] = useState(defaultState);
+
+    const { client, title, content } = state;
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        setState(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    };
+
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     console.log("qr form data:", { client, title, content });
+    //     setState(defaultState)
+    // };
+
+
+
+    //! db setup code
+    // const loadQR = () => {
+    //     API.getQRs()
+    //         .then(res => {
+    //             console.log("loadQR function res data", res)
+    //             setState(defaultState)
+    //         })
+    //         .catch(err => console.log(err));
+    // };
+
+    const loadQR = () => {
+        API.getQR()
+            .then(res => {
+                console.log("loadQR function res data", res)
+                setState(defaultState)
+            })
+            .catch(err => console.log(err));
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("contact form data:", { client, title, content });
-        setTitle("");
-        setContent("");
-        setClient("");
+        API.saveQR(state)
+            .then(res => {
+                // console.log(res.data)
+                console.log("handleSubmit data for QRForm - client: ", res.data.client)
+                console.log("handleSubmit data for QRForm - content: ", res.data.content) 
+                console.log("handleSubmit data for QRForm - title: ", res.data.title) 
+                console.log("handleSubmit data for QRForm - id: ", res.data._id)
+                loadQR(res.data)
+            })
+            .catch(err => console.log(err));
     };
 
     return (
@@ -62,7 +110,8 @@ const Contact = () => {
                                     id="client"
                                     name="client"
                                     value={client}
-                                    onChange={(e) => setClient(e.target.value)}
+                                    // onChange={(e) => setClient(e.target.value)}
+                                    onChange={handleChange}
                                     label="Name of client"
                                 />
                             </Grid>
@@ -73,7 +122,8 @@ const Contact = () => {
                                     id="title"
                                     name="title"
                                     value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    // onChange={(e) => setTitle(e.target.value)}
+                                    onChange={handleChange}
                                     label="Title of content"
                                 />
                             </Grid>
@@ -84,7 +134,8 @@ const Contact = () => {
                                     id="content"
                                     name="content"
                                     value={content}
-                                    onChange={(e) => setContent(e.target.value)}
+                                    // onChange={(e) => setContent(e.target.value)}
+                                    onChange={handleChange}
                                     label="Informational text"
                                     fullWidth
                                     multiline={true}

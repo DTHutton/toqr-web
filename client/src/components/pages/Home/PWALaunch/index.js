@@ -6,8 +6,7 @@ import {
 	Card,
 	CardActionArea,
 	CardContent,
-	CardMedia,
-	CardTitle
+	CardMedia
 } from "@material-ui/core";
 
 

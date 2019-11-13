@@ -29,19 +29,31 @@ const useStyles = makeStyles(theme => ({
 
 const Contact = () => {
 	const classes = useStyles();
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
-	const [message, setMessage] = useState("");
+
+	const defaultState = {
+		firstName: "",
+		lastName: "",
+		email: "",
+		message: ""
+	};
+
+	const [state, setState] = useState(defaultState);
+
+	const { firstName, lastName, email, message } = state;
+
+	const handleChange = e => {
+		const { name, value } = e.target;
+		setState(prevState => ({
+			...prevState,
+			[name]: value
+		}))
+	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log("contact form data:", { firstName, lastName, email, message });
-		setFirstName("");
-		setLastName("");
-		setEmail("");
-		setMessage("");
-	};
+		console.log("contact form data: ", { firstName, lastName, email, message })
+		setState(defaultState);
+	}
 
 	return (
 		<Container maxWidth="lg">
@@ -65,7 +77,7 @@ const Contact = () => {
 									id="firstName"
 									name="firstName"
 									value={firstName}
-									onChange={(e) => setFirstName(e.target.value)}
+									onChange={handleChange}
 									label="First name"
 									fullWidth
 									autoComplete="fname"
@@ -78,7 +90,7 @@ const Contact = () => {
 									id="lastName"
 									name="lastName"
 									value={lastName}
-									onChange={(e) => setLastName(e.target.value)}
+									onChange={handleChange}
 									label="Last name"
 									fullWidth
 									autoComplete="lname"
@@ -93,7 +105,7 @@ const Contact = () => {
 									label="Email Address"
 									name="email"
 									value={email}
-									onChange={(e) => setEmail(e.target.value)}
+									onChange={handleChange}
 									autoComplete="email"
 								/>
 							</Grid>
@@ -106,7 +118,7 @@ const Contact = () => {
 									label="Message"
 									name="message"
 									value={message}
-									onChange={(e) => setMessage(e.target.value)}
+									onChange={handleChange}
 									autoComplete="message"
 									multiline={true}
 									rows={4}

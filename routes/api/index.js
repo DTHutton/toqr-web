@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const toqrRoutes = require("./ToqrDB");
 
-router.use("/ToqrDB", toqrRoutes);
+router.use("/toqr", toqrRoutes);
 
 module.exports = router;
