@@ -7,6 +7,7 @@ import {
 	CardActionArea,
 	CardContent,
 	CardMedia,
+	CardTitle
 } from "@material-ui/core";
 
 
@@ -20,8 +21,8 @@ const useStyles = makeStyles(theme => ({
 		height: "100%",
 	},
 	media: {
-		height: 400,
-		// width: 300
+		height: "100%",
+		width: "100%"
 	}
 }));
 
@@ -31,14 +32,16 @@ const PWALaunch = () => {
 		<Grid item xs={12} md={4}>
 			<Card className={classes.card}>
 				<CardActionArea>
-					<CardMedia
-						className={classes.media}
-						image="/assets/images/frame.png"
-						title="QR Code for Mobile Launch"
-					/>
+					<CardMedia>
+						<img
+							src={"/assets/images/toqr-pwa-heroku.png"}
+							className={classes.media}
+							alt={"QR Code for Mobile Launch"}
+						/>
+					</CardMedia>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2" align="center">
-                            Launch our Mobile App for more!
+							Launch our Mobile App for more!
 						</Typography>
 					</CardContent>
 				</CardActionArea>

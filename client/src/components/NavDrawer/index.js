@@ -29,7 +29,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: "flex"	
+		display: "flex"
 	},
 	drawer: {
 		[theme.breakpoints.up("sm")]: {
@@ -84,7 +84,8 @@ const NavDrawer = props => {
 		route === "About" ? `/${route}`
 			: route === "Pricing" ? `/${route}`
 				: route === "Contact" ? `/${route}`
-					: "/"
+					: route === "QRForm" ? `/${route}`
+						: "/"
 	);
 
 	const drawer = (
@@ -109,16 +110,19 @@ const NavDrawer = props => {
 			</List>
 			<Divider />
 			<List>
-				{["Profile", "Settings", "Logout"].map(text => (
-					<ListItem button key={text}>
-						<ListItemIcon>{
-							text === "Profile" ? <AccountBoxIcon />
-								: text === "Settings" ? <SettingsIcon />
-									: <ExitToAppIcon />
-						}
-						</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
+				{["Profile", "QRForm", "Settings", "Logout"].map(text => (
+					<Link to={routeLink(text)} className={classes.unlink} key={text}>
+						<ListItem button key={text}>
+							<ListItemIcon>{
+								text === "Profile" ? <AccountBoxIcon />
+									: text === "QRForm" ? <SettingsIcon />
+										: text === "Settings" ? <SettingsIcon />
+											: <ExitToAppIcon />
+							}
+							</ListItemIcon>
+							<ListItemText primary={text} />
+						</ListItem>
+					</Link>
 				))}
 			</List>
 		</div >
