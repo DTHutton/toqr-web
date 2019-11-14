@@ -13,6 +13,7 @@ module.exports = {
     findById: function (req, res) {
         console.log("controller findById req.body: ", req.body);
         console.log("controller findById req.params: ", req.params);
+        console.log("controller findById req: ", req);
         db.ToqrDB
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))

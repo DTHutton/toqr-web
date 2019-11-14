@@ -83,7 +83,7 @@ const Contact = () => {
                 console.log("handleSubmit data for QRForm - content: ", res.data.content) 
                 console.log("handleSubmit data for QRForm - title: ", res.data.title) 
                 console.log("handleSubmit data for QRForm - id: ", res.data._id)
-                loadQR(res.data)
+                loadQR(res)
             })
             .catch(err => console.log(err));
     };
