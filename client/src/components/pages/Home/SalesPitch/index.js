@@ -18,12 +18,21 @@ const SalesPitch = () => {
 		<Grid item xs={12} md={8}>
 			<Paper className={classes.root}>
 				<Typography variant="h5" component="h3">
-                    This is the SalesPitch section.
+				Who benefits from our services?
 				</Typography>
 
 				<Typography component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut lectus. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Nulla aliquet porttitor lacus luctus. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Maecenas accumsan lacus vel facilisis volutpat est. Tortor dignissim convallis aenean et tortor at risus viverra. Viverra accumsan in nisl nisi scelerisque eu. Magna eget est lorem ipsum dolor sit amet consectetur. Vivamus arcu felis bibendum ut tristique. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Nec feugiat in fermentum posuere urna nec tincidunt.
+                    Retailers. We offer a simple way to get detailed information to customers about your products and services or trying to train new employees on your store's intricacies while giving them a tour of the facilities.
 				</Typography>
+
+				<Typography component="p">
+                    School Campuses. We provide an easy way to offer students and parents a closer look at your school's facilities and goals when it comes to educating future generations.
+				</Typography>
+
+				<Typography component="p">
+                    National Parks. Education outreach is an important way our National Parks system keeps new generations of Americans informed about the natural world around them. Placing our codes throughout the park offers additional insight into mother nature with just a quick scan. 
+				</Typography>
+
 			</Paper>
 		</Grid>
 	);

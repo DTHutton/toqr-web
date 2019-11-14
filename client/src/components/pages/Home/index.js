@@ -18,9 +18,9 @@ const Home = () => {
 
 	return (
 		<div>
-			<Container maxWidth="sm" component="main" className={classes.heroContent}>
+			<Container maxWidth="lg" component="main" className={classes.heroContent}>
 				<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-					Welcome to TOQR!
+				Toqr is your customizable solution for improved learning on the go.
 				</Typography>
 			</Container>
 			<Grid container direction="row">
