@@ -27,7 +27,7 @@ const App = () => {
 	return (
 		<Router>
 			<CssBaseline />
-			<Container>
+			<Container maxWidth="lg">
 				<NavDrawer>
 					<Container>
 						<Grid container direction="row" className={classes.mainSpacing}>

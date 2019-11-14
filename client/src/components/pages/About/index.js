@@ -19,14 +19,14 @@ const About = () => {
 
 	return (
 		<Fragment>
-			<Container maxWidth="sm" component="main" className={classes.heroContent}>
+			<Container component="main" className={classes.heroContent}>
 				<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
 					About Us
 				</Typography>
 			</Container>
 
 			<Container>
-				<Grid item xs={12} md={8}>
+				<Grid item xs={12}>
 					<Paper className={classes.root}>
 						<Typography variant="h5" component="h3">
 							This is the about section.
