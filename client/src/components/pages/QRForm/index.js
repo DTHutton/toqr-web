@@ -47,11 +47,11 @@ const Contact = () => {
         }))
     };
 
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     console.log("qr form data:", { client, title, content });
-    //     setState(defaultState)
-    // };
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log("qr form data:", { client, title, content });
+        setState(defaultState)
+    };
 
 
 
@@ -65,28 +65,28 @@ const Contact = () => {
     //         .catch(err => console.log(err));
     // };
 
-    const loadQR = () => {
-        API.getQR()
-            .then(res => {
-                console.log("loadQR function res data", res)
-                setState(defaultState)
-            })
-            .catch(err => console.log(err));
-    };
+    // const loadQR = () => {
+    //     API.getQR()
+    //         .then(res => {
+    //             // console.log("loadQR function res data", res)
+    //             setState(defaultState)
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        API.saveQR(state)
-            .then(res => {
-                // console.log(res.data)
-                console.log("handleSubmit data for QRForm - client: ", res.data.client)
-                console.log("handleSubmit data for QRForm - content: ", res.data.content) 
-                console.log("handleSubmit data for QRForm - title: ", res.data.title) 
-                console.log("handleSubmit data for QRForm - id: ", res.data._id)
-                loadQR(res)
-            })
-            .catch(err => console.log(err));
-    };
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     API.saveQR(state)
+    //         .then(res => {
+    //             // console.log(res.data)
+    //             // console.log("handleSubmit data for QRForm - client: ", res.data.client)
+    //             // console.log("handleSubmit data for QRForm - content: ", res.data.content) 
+    //             // console.log("handleSubmit data for QRForm - title: ", res.data.title) 
+    //             // console.log("handleSubmit data for QRForm - id: ", res.data._id)
+    //             loadQR(res)
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     return (
         <Container maxWidth="lg">

@@ -12,8 +12,8 @@ import {
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(2),
-		margin: theme.spacing(1)
+		padding: theme.spacing(.5),
+		margin: theme.spacing(0)
 	},
 	card: {
 		width: "100%",
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 const PWALaunch = () => {
 	const classes = useStyles();
 	return (
-		<Grid item xs={12} md={4}>
+		<Grid item xs={12} md={4} className={classes.root}>
 			<Card className={classes.card}>
 				<CardActionArea>
 					<CardMedia>
