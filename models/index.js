@@ -1,4 +1,4 @@
 module.exports = {
-    ToqrDB: require("./ToqrDB")
-  };
+	ToqrDB: require("./ToqrDB")
+};
   
