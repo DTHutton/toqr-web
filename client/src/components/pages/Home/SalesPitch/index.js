@@ -29,7 +29,7 @@ const SalesPitch = () => {
 				</Typography>
 
 				<Typography variant="body1" gutterBottom>
-					We offer a simple way to get detailed information to customers about your products and services or trying to train new employees on your store's intricacies while giving them a tour of the facilities.
+					We offer a simple way to get detailed information to customers about your products and services or trying to train new employees on your store&apos;s intricacies while giving them a tour of the facilities.
 				</Typography>
 
 				<Typography variant="subtitle1" gutterBottom>
@@ -37,7 +37,7 @@ const SalesPitch = () => {
 				</Typography>
 
 				<Typography variant="body1" gutterBottom>
-					We provide an easy way to offer students and parents a closer look at your school's facilities and goals when it comes to educating future generations.
+					We provide an easy way to offer students and parents a closer look at your school&apos;s facilities and goals when it comes to educating future generations.
 				</Typography>
 
 				<Typography variant="subtitle1" gutterBottom>

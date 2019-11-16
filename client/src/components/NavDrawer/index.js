@@ -22,7 +22,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import ImportExportIcon from '@material-ui/icons/ImportExport';
+import ImportExportIcon from "@material-ui/icons/ImportExport";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 

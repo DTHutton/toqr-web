@@ -124,10 +124,10 @@ const Pricing = () => {
 								</CardContent>
 								<CardActions>
 									<Button 
-									fullWidth 
-									variant={tier.buttonVariant} 
-									color="primary"
-									onClick={() => alert(tier.buttonText)}
+										fullWidth 
+										variant={tier.buttonVariant} 
+										color="primary"
+										onClick={() => alert(tier.buttonText)}
 									>
 										{tier.buttonText}
 									</Button>

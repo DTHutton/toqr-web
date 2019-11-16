@@ -46,14 +46,14 @@ const Contact = () => {
 		setState(prevState => ({
 			...prevState,
 			[name]: value
-		}))
+		}));
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log("contact form data: ", { firstName, lastName, email, message })
+		console.log("contact form data: ", { firstName, lastName, email, message });
 		setState(defaultState);
-	}
+	};
 
 	return (
 		<Container maxWidth="lg">
