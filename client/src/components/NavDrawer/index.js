@@ -81,45 +81,48 @@ const NavDrawer = props => {
 		setMobileOpen(!mobileOpen);
 	};
 
-	const routeLink = route => (
-		route === "About" ? `/${route}`
-			: route === "Pricing" ? `/${route}`
-				: route === "Contact" ? `/${route}`
-					: route === "QRForm" ? `/${route}`
-						: "/"
-	);
+	const navListArr = ["Home", "About", "Pricing", "Contact", "QRForm"];
+
+	const routeLink = route => {
+		switch (route) {
+			case "Home":
+				return `/`
+			case "About":
+				return `/${route}`
+			case "Pricing":
+				return `/${route}`
+			case "QRForm":
+				return `/${route}`
+			case "Contact":
+				return `/${route}`
+		}
+	}
+
+	const navListSwitch = text => {
+		switch (text) {
+			case "Home":
+				return <HomeIcon />
+			case "About":
+				return <InfoIcon />
+			case "Pricing":
+				return <MonetizationOnIcon />
+			case "QRForm":
+				return <ImportExportIcon />
+			case "Contact":
+				return <EmailIcon />
+		}
+	}
 
 	const drawer = (
 		<div>
 			<div className={classes.toolbar} />
 			<Divider />
 			<List>
-				{["Home", "About", "Pricing", "Contact"].map(text => (
+				{navListArr.map(text => (
 					<Link to={routeLink(text)} className={classes.unlink} key={text}>
 						<ListItem button key={text}>
-							<ListItemIcon>{
-								text === "Home" ? <HomeIcon />
-									: text === "About" ? <InfoIcon />
-										: text === "Pricing" ? <MonetizationOnIcon />
-											: <EmailIcon />
-							}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-					</Link>
-				))}
-			</List>
-			<Divider />
-			<List>
-				{["Profile", "QRForm", "Settings", "Logout"].map(text => (
-					<Link to={routeLink(text)} className={classes.unlink} key={text}>
-						<ListItem button key={text}>
-							<ListItemIcon>{
-								text === "Profile" ? <AccountBoxIcon />
-									: text === "QRForm" ? <ImportExportIcon />
-										: text === "Settings" ? <SettingsIcon />
-											: <ExitToAppIcon />
-							}
+							<ListItemIcon>
+								{navListSwitch(text)}
 							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItem>
@@ -128,13 +131,6 @@ const NavDrawer = props => {
 			</List>
 		</div >
 	);
-
-	// const navTitle = ({ match }) => {
-	// 	const title = () => !match.params.id ? "Home" : match.params.id;
-	// 	return (
-	// 		<div>{title()}</div>
-	// 	);
-	// };
 
 	return (
 		<Router>
@@ -160,13 +156,6 @@ const NavDrawer = props => {
 									</Typography>
 								</Grid>
 							</Hidden>
-
-							{/* <Grid item xs={12} sm={7}>
-								<Typography variant="h6" noWrap>
-									<Route exact path="/" component={navTitle} />
-									<Route path="/:id" component={navTitle} />
-								</Typography>
-							</Grid> */}
 						</Grid>
 					</Toolbar>
 				</AppBar>
