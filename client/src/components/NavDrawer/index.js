@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
-		[theme.breakpoints.up("sm")]: {
+		[theme.breakpoints.up("md")]: {
 			display: "none"
 		}
 	},
@@ -149,7 +149,7 @@ const NavDrawer = props => {
 		<Router>
 			<div className={classes.root}>
 				<CssBaseline />
-				<Hidden smUp>
+				<Hidden mdUp>
 					<AppBar position="fixed" className={classes.appBar}>
 						<Toolbar>
 							<IconButton
@@ -169,7 +169,7 @@ const NavDrawer = props => {
 					</Drawer>
 				</Hidden>
 
-				<Hidden mdDown>
+				<Hidden smDown>
 					<TopBarNav />
 				</Hidden>
 				{props.children}

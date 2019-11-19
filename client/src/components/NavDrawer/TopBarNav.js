@@ -10,8 +10,7 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
 		[theme.breakpoints.up("sm")]: {
-			width: "100%",
-			// marginLeft: drawerWidth,
+			// width: "100%",
 			zIndex: theme.zIndex.drawer + 1,
 		}
 	}, 
