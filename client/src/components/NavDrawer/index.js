@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TopBarNav from "./TopBarNav";
 import {
 	AppBar,
 	CssBaseline,
@@ -10,20 +11,15 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
-	Toolbar,
-	Typography,
-	Grid
+	Toolbar
 } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import EmailIcon from "@material-ui/icons/Email";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import SettingsIcon from "@material-ui/icons/Settings";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import ImportExportIcon from "@material-ui/icons/ImportExport";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -47,9 +43,12 @@ const useStyles = makeStyles(theme => ({
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
-		[theme.breakpoints.up("sm")]: {
+		[theme.breakpoints.up("md")]: {
 			display: "none"
 		}
+	},
+	list: {
+		width: 250,
 	},
 	toolbar: theme.mixins.toolbar,
 	drawerPaper: {
@@ -72,137 +71,108 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavDrawer = props => {
-	const { container } = props;
 	const classes = useStyles();
-	const theme = useTheme();
-	const [mobileOpen, setMobileOpen] = useState(false);
+	const [state, setState] = useState({
+		top: false,
+		left: false,
+		bottom: false,
+		right: false,
+	});
 
-	const handleDrawerToggle = () => {
-		setMobileOpen(!mobileOpen);
+	const toggleDrawer = (side, open) => event => {
+		if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+			return;
+		}
+
+		setState({ ...state, [side]: open });
 	};
 
-	const routeLink = route => (
-		route === "About" ? `/${route}`
-			: route === "Pricing" ? `/${route}`
-				: route === "Contact" ? `/${route}`
-					: route === "QRForm" ? `/${route}`
-						: "/"
-	);
+	const navListArr = ["Home", "Pricing", "QRForm", "Contact", "About"];
 
-	const drawer = (
-		<div>
-			<div className={classes.toolbar} />
+	const routeLink = route => {
+		switch (route) {
+		case "Home":
+			return "/";
+		case "About":
+			return `/${route}`;
+		case "Pricing":
+			return `/${route}`;
+		case "QRForm":
+			return `/${route}`;
+		case "Contact":
+			return `/${route}`;
+		}
+	};
+
+	const navListSwitch = text => {
+		switch (text) {
+		case "Home":
+			return <HomeIcon />;
+		case "About":
+			return <InfoIcon />;
+		case "Pricing":
+			return <MonetizationOnIcon />;
+		case "QRForm":
+			return <ImportExportIcon />;
+		case "Contact":
+			return <EmailIcon />;
+		}
+	};
+
+	const sideList = side => (
+		<div
+			className={classes.list}
+			role="presentation"
+			onClick={toggleDrawer(side, false)}
+			onKeyDown={toggleDrawer(side, false)}
+		>
 			<Divider />
 			<List>
-				{["Home", "About", "Pricing", "Contact"].map(text => (
+				{navListArr.map(text => (
 					<Link to={routeLink(text)} className={classes.unlink} key={text}>
 						<ListItem button key={text}>
-							<ListItemIcon>{
-								text === "Home" ? <HomeIcon />
-									: text === "About" ? <InfoIcon />
-										: text === "Pricing" ? <MonetizationOnIcon />
-											: <EmailIcon />
-							}
+							<ListItemIcon>
+								{navListSwitch(text)}
 							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItem>
 					</Link>
 				))}
 			</List>
-			<Divider />
-			<List>
-				{["Profile", "QRForm", "Settings", "Logout"].map(text => (
-					<Link to={routeLink(text)} className={classes.unlink} key={text}>
-						<ListItem button key={text}>
-							<ListItemIcon>{
-								text === "Profile" ? <AccountBoxIcon />
-									: text === "QRForm" ? <ImportExportIcon />
-										: text === "Settings" ? <SettingsIcon />
-											: <ExitToAppIcon />
-							}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-					</Link>
-				))}
-			</List>
-		</div >
+		</div>
 	);
-
-	// const navTitle = ({ match }) => {
-	// 	const title = () => !match.params.id ? "Home" : match.params.id;
-	// 	return (
-	// 		<div>{title()}</div>
-	// 	);
-	// };
 
 	return (
 		<Router>
 			<div className={classes.root}>
 				<CssBaseline />
-				<AppBar position="fixed" className={classes.appBar}>
-					<Toolbar>
-						<IconButton
-							color="inherit"
-							aria-label="open drawer"
-							edge="start"
-							onClick={handleDrawerToggle}
-							className={classes.menuButton}
-						>
-							<MenuIcon />
-						</IconButton>
+				<Hidden mdUp>
+					<AppBar position="fixed" className={classes.appBar}>
+						<Toolbar>
+							<IconButton
+								color="inherit"
+								aria-label="open drawer"
+								edge="start"
+								onClick={toggleDrawer("left", true)}
+								className={classes.menuButton}
+							>
+								<MenuIcon />
+							</IconButton>
+						</Toolbar>
+					</AppBar>
 
-						<Grid container>
-							<Hidden xsDown>
-								<Grid item sm={5} className={classes.logoPad}>
-									<Typography variant="h6" noWrap>
-										<Link to="/" className={classes.unlink}>TOQR</Link>
-									</Typography>
-								</Grid>
-							</Hidden>
+					<Drawer open={state.left} onClose={toggleDrawer("left", false)}>
+						{sideList("left")}
+					</Drawer>
+				</Hidden>
 
-							{/* <Grid item xs={12} sm={7}>
-								<Typography variant="h6" noWrap>
-									<Route exact path="/" component={navTitle} />
-									<Route path="/:id" component={navTitle} />
-								</Typography>
-							</Grid> */}
-						</Grid>
-					</Toolbar>
-				</AppBar>
-				<nav className={classes.drawer} aria-label="mailbox folders">
-					<Hidden smUp implementation="css">
-						<Drawer
-							container={container}
-							variant="temporary"
-							anchor={theme.direction === "rtl" ? "right" : "left"}
-							open={mobileOpen}
-							onClose={handleDrawerToggle}
-							classes={{
-								paper: classes.drawerPaper
-							}}
-							ModalProps={{
-								keepMounted: true
-							}}
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-					<Hidden xsDown implementation="css">
-						<Drawer
-							classes={{
-								paper: classes.drawerPaper
-							}}
-							variant="permanent"
-							open
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-				</nav>
+				<Hidden smDown>
+					<TopBarNav />
+				</Hidden>
 				{props.children}
 			</div>
 		</Router>
 	);
 };
+
 export default NavDrawer;
