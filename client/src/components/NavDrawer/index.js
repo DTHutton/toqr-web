@@ -11,7 +11,8 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
-	Toolbar
+	Toolbar,
+	Typography
 } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
@@ -63,20 +64,14 @@ const useStyles = makeStyles(theme => ({
 		color: "inherit"
 	},
 	title: {
-		textAlign: "center"
-	},
-	logoPad: {
-		paddingLeft: "45px"
+		flexGrow: 1,
 	}
 }));
 
 const NavDrawer = props => {
 	const classes = useStyles();
 	const [state, setState] = useState({
-		top: false,
 		left: false,
-		bottom: false,
-		right: false,
 	});
 
 	const toggleDrawer = (side, open) => event => {
@@ -91,31 +86,52 @@ const NavDrawer = props => {
 
 	const routeLink = route => {
 		switch (route) {
-		case "Home":
-			return "/";
-		case "About":
-			return `/${route}`;
-		case "Pricing":
-			return `/${route}`;
-		case "QRForm":
-			return `/${route}`;
-		case "Contact":
-			return `/${route}`;
+			case "Home":
+				return "/";
+			case "About":
+				return `/${route}`;
+			case "Pricing":
+				return `/${route}`;
+			case "QRForm":
+				return `/${route}`;
+			case "Contact":
+				return `/${route}`;
+			default:
+				console.log("routeLink done broke in ./src/components/NavDrawer/index.js");
 		}
 	};
 
 	const navListSwitch = text => {
 		switch (text) {
-		case "Home":
-			return <HomeIcon />;
-		case "About":
-			return <InfoIcon />;
-		case "Pricing":
-			return <MonetizationOnIcon />;
-		case "QRForm":
-			return <ImportExportIcon />;
-		case "Contact":
-			return <EmailIcon />;
+			case "Home":
+				return <HomeIcon />;
+			case "About":
+				return <InfoIcon />;
+			case "Pricing":
+				return <MonetizationOnIcon />;
+			case "QRForm":
+				return <ImportExportIcon />;
+			case "Contact":
+				return <EmailIcon />;
+			default:
+				console.log("navListSwitch done broke in ./src/components/NavDrawer/index.js.");
+		}
+	};
+
+	const navTitleSwitch = text => {
+		switch (text) {
+			case "Home":
+				return "TOQR";
+			case "About":
+				return "About";
+			case "Pricing":
+				return "Pricing";
+			case "QRForm":
+				return "QR Form";
+			case "Contact":
+				return "Contact";
+			default:
+				console.log("navTitleSwitch done broke in in ./src/components/NavDrawer/index.js");
 		}
 	};
 
@@ -167,7 +183,19 @@ const NavDrawer = props => {
 				</Hidden>
 
 				<Hidden smDown>
-					<TopBarNav />
+					<TopBarNav>
+						{navListArr.map(text => (
+							<Link to={routeLink(text)} className={classes.unlink} key={text}>
+								<Typography
+									variant="h6"
+									key={text}
+									className={classes.title}
+								>
+									{navTitleSwitch(text)}
+								</Typography>
+							</Link>
+						))}
+					</TopBarNav>
 				</Hidden>
 				{props.children}
 			</div>
