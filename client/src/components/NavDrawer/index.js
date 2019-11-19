@@ -11,9 +11,7 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
-	Toolbar,
-	Typography,
-	Grid
+	Toolbar
 } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
@@ -21,7 +19,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import ImportExportIcon from "@material-ui/icons/ImportExport";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -73,7 +71,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavDrawer = props => {
-	const { container } = props;
 	const classes = useStyles();
 	const [state, setState] = useState({
 		top: false,
@@ -83,7 +80,7 @@ const NavDrawer = props => {
 	});
 
 	const toggleDrawer = (side, open) => event => {
-		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+		if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
 			return;
 		}
 
@@ -94,33 +91,33 @@ const NavDrawer = props => {
 
 	const routeLink = route => {
 		switch (route) {
-			case "Home":
-				return `/`
-			case "About":
-				return `/${route}`
-			case "Pricing":
-				return `/${route}`
-			case "QRForm":
-				return `/${route}`
-			case "Contact":
-				return `/${route}`
+		case "Home":
+			return "/";
+		case "About":
+			return `/${route}`;
+		case "Pricing":
+			return `/${route}`;
+		case "QRForm":
+			return `/${route}`;
+		case "Contact":
+			return `/${route}`;
 		}
-	}
+	};
 
 	const navListSwitch = text => {
 		switch (text) {
-			case "Home":
-				return <HomeIcon />
-			case "About":
-				return <InfoIcon />
-			case "Pricing":
-				return <MonetizationOnIcon />
-			case "QRForm":
-				return <ImportExportIcon />
-			case "Contact":
-				return <EmailIcon />
+		case "Home":
+			return <HomeIcon />;
+		case "About":
+			return <InfoIcon />;
+		case "Pricing":
+			return <MonetizationOnIcon />;
+		case "QRForm":
+			return <ImportExportIcon />;
+		case "Contact":
+			return <EmailIcon />;
 		}
-	}
+	};
 
 	const sideList = side => (
 		<div
@@ -156,7 +153,7 @@ const NavDrawer = props => {
 								color="inherit"
 								aria-label="open drawer"
 								edge="start"
-								onClick={toggleDrawer('left', true)}
+								onClick={toggleDrawer("left", true)}
 								className={classes.menuButton}
 							>
 								<MenuIcon />
@@ -164,8 +161,8 @@ const NavDrawer = props => {
 						</Toolbar>
 					</AppBar>
 
-					<Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-						{sideList('left')}
+					<Drawer open={state.left} onClose={toggleDrawer("left", false)}>
+						{sideList("left")}
 					</Drawer>
 				</Hidden>
 
@@ -178,128 +175,4 @@ const NavDrawer = props => {
 	);
 };
 
-
-// const NavDrawer = props => {
-// 	const { container } = props;
-// 	const classes = useStyles();
-// 	const theme = useTheme();
-// 	const [mobileOpen, setMobileOpen] = useState(false);
-
-// 	const handleDrawerToggle = () => {
-// 		setMobileOpen(!mobileOpen);
-// 	};
-
-// 	const navListArr = ["Home", "About", "Pricing", "Contact", "QRForm"];
-
-// 	const routeLink = route => {
-// 		switch (route) {
-// 			case "Home":
-// 				return `/`
-// 			case "About":
-// 				return `/${route}`
-// 			case "Pricing":
-// 				return `/${route}`
-// 			case "QRForm":
-// 				return `/${route}`
-// 			case "Contact":
-// 				return `/${route}`
-// 		}
-// 	}
-
-// 	const navListSwitch = text => {
-// 		switch (text) {
-// 			case "Home":
-// 				return <HomeIcon />
-// 			case "About":
-// 				return <InfoIcon />
-// 			case "Pricing":
-// 				return <MonetizationOnIcon />
-// 			case "QRForm":
-// 				return <ImportExportIcon />
-// 			case "Contact":
-// 				return <EmailIcon />
-// 		}
-// 	}
-
-// 	const drawer = (
-// 		<div>
-// 			<div className={classes.toolbar} />
-// 			<Divider />
-// 			<List>
-// 				{navListArr.map(text => (
-// 					<Link to={routeLink(text)} className={classes.unlink} key={text}>
-// 						<ListItem button key={text}>
-// 							<ListItemIcon>
-// 								{navListSwitch(text)}
-// 							</ListItemIcon>
-// 							<ListItemText primary={text} />
-// 						</ListItem>
-// 					</Link>
-// 				))}
-// 			</List>
-// 		</div >
-// 	);
-
-// 	return (
-// 		<Router>
-// 			<div className={classes.root}>
-// 				<CssBaseline />
-// 				<AppBar position="fixed" className={classes.appBar}>
-// 					<Toolbar>
-// 						<IconButton
-// 							color="inherit"
-// 							aria-label="open drawer"
-// 							edge="start"
-// 							onClick={handleDrawerToggle}
-// 							className={classes.menuButton}
-// 						>
-// 							<MenuIcon />
-// 						</IconButton>
-
-// 						<Grid container>
-// 							<Hidden xsDown>
-// 								<Grid item sm={5} className={classes.logoPad}>
-// 									<Typography variant="h6" noWrap>
-// 										<Link to="/" className={classes.unlink}>TOQR</Link>
-// 									</Typography>
-// 								</Grid>
-// 							</Hidden>
-// 						</Grid>
-// 					</Toolbar>
-// 				</AppBar>
-// 				<nav className={classes.drawer} aria-label="mailbox folders">
-// 					<Hidden smUp implementation="css">
-// 						<Drawer
-// 							container={container}
-// 							variant="temporary"
-// 							anchor={theme.direction === "rtl" ? "right" : "left"}
-// 							open={mobileOpen}
-// 							onClose={handleDrawerToggle}
-// 							classes={{
-// 								paper: classes.drawerPaper
-// 							}}
-// 							ModalProps={{
-// 								keepMounted: true
-// 							}}
-// 						>
-// 							{drawer}
-// 						</Drawer>
-// 					</Hidden>
-// 					<Hidden xsDown implementation="css">
-// 						<Drawer
-// 							classes={{
-// 								paper: classes.drawerPaper
-// 							}}
-// 							variant="permanent"
-// 							open
-// 						>
-// 							{drawer}
-// 						</Drawer>
-// 					</Hidden>
-// 				</nav>
-// 				{props.children}
-// 			</div>
-// 		</Router>
-// 	);
-// };
 export default NavDrawer;
