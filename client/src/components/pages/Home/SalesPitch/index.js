@@ -5,7 +5,7 @@ import { Paper, Typography, Grid, Divider } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: theme.spacing(2, 2),
-		margin: theme.spacing(1, 1),
+		margin: theme.spacing(0),
 		height: "100%",
 		width: "100%"
 	},

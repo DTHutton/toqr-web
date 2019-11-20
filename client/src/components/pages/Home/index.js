@@ -23,7 +23,7 @@ const Home = () => {
 				Toqr is your customizable solution for improved learning on the go.
 				</Typography>
 			</Container>
-			<Grid container direction="row" alignItems="center">
+			<Grid container direction="row" alignItems="stretch">
 				<PWALaunch />
 				<SalesPitch />
 			</Grid>

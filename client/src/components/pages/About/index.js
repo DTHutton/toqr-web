@@ -1,6 +1,19 @@
 import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Typography, Grid, Container } from "@material-ui/core";
+import {
+	Paper,
+	Typography,
+	Grid,
+	Container,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText
+} from "@material-ui/core";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import CodeIcon from "@material-ui/icons/Code";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -11,37 +24,147 @@ const useStyles = makeStyles(theme => ({
 	},
 	heroContent: {
 		padding: theme.spacing(2, 0, 6),
+	},
+	demo: {
+		backgroundColor: theme.palette.background.paper,
+	},
+	promoTitle: {
+		paddingLeft: "40px"
+	},
+	promoLinks: {
+		padding: theme.spacing(2),
+		flexGrow: 1
+	},
+	grow: {
+		flexGrow: 1
+	},
+	unlink: {
+		textDecoration: "none",
+		color: "inherit"
 	}
 }));
 
 const About = () => {
 	const classes = useStyles();
+	const handleClick = event => {
+		event.preventDefault();
+		window.location.assign("https://github.com/DTHutton");
+	}
 
 	return (
 		<Fragment>
-			<Container component="main" className={classes.heroContent}>
-				<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-					About Us
-				</Typography>
-			</Container>
+			<Router>
+				<Paper className={classes.root}>
+					<Container component="main" className={classes.heroContent}>
+						<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+							About Us
+					</Typography>
+					</Container>
 
-			<Container>
-				<Grid item xs={12}>
-					<Paper className={classes.root}>
-						<Typography variant="h5" component="h3">
-							This is the about section.
+					<Grid container>
+						<Grid
+							container
+							direction="row"
+							justify="space-evenly"
+							alignItems="center"
+						>
+							<Grid item align="center" xs={6}>
+								<Typography variant="h6">
+									The TOQR Project
+          					</Typography>
+							</Grid>
+							<Grid item className={classes.promoTitle} xs={3}>
+								<Typography variant="h6">
+									Derek Hutton
+          					</Typography>
+							</Grid>
+							<Grid item className={classes.promoTitle} xs={3}>
+								<Typography variant="h6">
+									Molly Omens
+          					</Typography>
+							</Grid>
+						</Grid>
+						<Grid item xs={6}>
+							<Typography>
+								TOQR Started as our final project for the UCF Coding Bootcamp. When we first began fleshing out the application, we had one goal in mind: To make a flexible framework for clients to easily disseminate information over a large area. We've learned a lot making this project and if anything, it's taught us that we still have a long way to go. Despite the long road ahead, we're proud to have put this together and we'll continue to bring the same pride and passion to all future projects.
 						</Typography>
 
-						<Typography component="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut lectus. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Nulla aliquet porttitor lacus luctus. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Maecenas accumsan lacus vel facilisis volutpat est. Tortor dignissim convallis aenean et tortor at risus viverra. Viverra accumsan in nisl nisi scelerisque eu. Magna eget est lorem ipsum dolor sit amet consectetur. Vivamus arcu felis bibendum ut tristique. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Nec feugiat in fermentum posuere urna nec tincidunt.
-						</Typography>
+						</Grid>
 
-						<Typography component="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut lectus. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Nulla aliquet porttitor lacus luctus. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Maecenas accumsan lacus vel facilisis volutpat est. Tortor dignissim convallis aenean et tortor at risus viverra. Viverra accumsan in nisl nisi scelerisque eu. Magna eget est lorem ipsum dolor sit amet consectetur. Vivamus arcu felis bibendum ut tristique. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Nec feugiat in fermentum posuere urna nec tincidunt.
-						</Typography>
-					</Paper>
-				</Grid>
-			</Container>
+						<Grid item xs={6}>
+							<Grid container className={classes.promoLinks}>
+								<Grid item xs={6}>
+									<List>
+										<Link
+											rel="noopener"
+											target="_blank"
+											className={classes.unlink}
+											onClick={handleClick}
+										>
+											<ListItem button>
+												<ListItemIcon>
+													<GitHubIcon />
+												</ListItemIcon>
+												<ListItemText primary="GitHub" />
+											</ListItem>
+										</Link>
+										<Link
+											rel="noopener"
+											target="_blank"
+											className={classes.unlink}
+											onClick={handleClick}
+										>
+											<ListItem button>
+												<ListItemIcon>
+													<LinkedInIcon />
+												</ListItemIcon>
+												<ListItemText primary="LinkedIn" />
+											</ListItem>
+										</Link>
+										<Link
+											rel="noopener"
+											target="_blank"
+											className={classes.unlink}
+											onClick={handleClick}
+										>
+											<ListItem button>
+												<ListItemIcon>
+													<CodeIcon />
+												</ListItemIcon>
+												<ListItemText primary="Portfolio" />
+											</ListItem>
+										</Link>
+									</List>
+								</Grid>
+
+								<Grid item xs={6}>
+									<List>
+										<ListItem button>
+											<ListItemIcon>
+												<GitHubIcon />
+											</ListItemIcon>
+											<ListItemText primary="GitHub" />
+										</ListItem>
+										<ListItem button>
+											<ListItemIcon>
+												<LinkedInIcon />
+											</ListItemIcon>
+											<ListItemText primary="LinkedIn" />
+										</ListItem>
+										<ListItem button>
+											<ListItemIcon>
+												<CodeIcon />
+											</ListItemIcon>
+											<ListItemText primary="Portfolio" />
+										</ListItem>
+									</List>
+								</Grid>
+							</Grid>
+						</Grid>
+
+					</Grid>
+				</Paper>
+			</Router>
 		</Fragment>
 	);
 };
